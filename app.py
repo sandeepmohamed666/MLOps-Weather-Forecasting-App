@@ -1,5 +1,3 @@
-
-
 import streamlit as st
 import pandas as pd
 import os
@@ -20,7 +18,7 @@ st.markdown("Simple Streamlit app using hourly weather dataset")
 # LOAD DATA
 # =====================================================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_PATH = os.path.join(BASE_DIR, "hourly_weather_data.csv")
+DATA_PATH = os.path.join(BASE_DIR, "data", "hourly_weather_data.csv")
 
 
 @st.cache_data
@@ -28,7 +26,7 @@ def load_data(path):
     return pd.read_csv(path)
 
 try:
-    df = load_data('hourly_weather_data.csv')
+    df = load_data(DATA_PATH)
     st.success("✅ Dataset loaded successfully")
 
 except Exception as e:
