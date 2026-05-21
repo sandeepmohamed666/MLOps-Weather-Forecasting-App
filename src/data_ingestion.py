@@ -13,7 +13,7 @@ openmeteo = openmeteo_requests.Client(session = retry_session)
 # The order of variables in hourly or daily is important to assign them correctly below
 url = "https://api.open-meteo.com/v1/forecast"
 params = {
-	"latitude": 8.5686,
+	"latitude": 8.5686, "longitude": 76.8731,
 	"hourly": ["temperature_2m", "relative_humidity_2m", "dew_point_2m", "rain", "wind_speed_10m", "wind_direction_10m"],
 }
 responses = openmeteo.weather_api(url, params = params)
@@ -51,3 +51,13 @@ hourly_data["wind_direction_10m"] = hourly_wind_direction_10m
 
 hourly_dataframe = pd.DataFrame(data = hourly_data)
 print("\nHourly data\n", hourly_dataframe)
+import os
+
+# Create data directory if it doesn't exist
+os.makedirs("data", exist_ok=True)
+
+# Save dataframe to CSV
+file_path = "data/hourly_weather_data.csv"
+hourly_dataframe.to_csv(file_path, index=False)
+
+print(f"\nFile saved to: {file_path}")

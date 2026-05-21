@@ -1,0 +1,14 @@
+stages:
+  stage_name:
+    cmd: python script.py
+    deps:
+      - path/to/input
+      - script.py
+    outs:
+      - path/to/output
+    params:
+      - params.yaml:param_name
+    metrics:
+      - metrics.json
+    plots:
+      - plots.csv
