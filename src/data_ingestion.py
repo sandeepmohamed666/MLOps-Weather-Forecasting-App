@@ -1,7 +1,7 @@
 import openmeteo_requests
-
 import pandas as pd
 import requests_cache
+import os
 from retry_requests import retry
 
 # Setup the Open-Meteo API client with cache and retry on error
@@ -51,13 +51,16 @@ hourly_data["wind_direction_10m"] = hourly_wind_direction_10m
 
 hourly_dataframe = pd.DataFrame(data = hourly_data)
 print("\nHourly data\n", hourly_dataframe)
-import os
+
+# Define data directory relative to the project root
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.join(BASE_DIR, "data")
 
 # Create data directory if it doesn't exist
-os.makedirs("data", exist_ok=True)
+os.makedirs(DATA_DIR, exist_ok=True)
 
 # Save dataframe to CSV
-file_path = "data/hourly_weather_data.csv"
+file_path = os.path.join(DATA_DIR, "hourly_weather_data.csv")
 hourly_dataframe.to_csv(file_path, index=False)
 
 print(f"\nFile saved to: {file_path}")
