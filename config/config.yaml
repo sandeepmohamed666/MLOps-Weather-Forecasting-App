@@ -1,0 +1,42 @@
+# config.yaml
+
+project:
+  name: "Weather Forecasting App"
+  version: "1.0.0"
+  author: "Your Name"
+
+data:
+  raw_data_path: "data/raw/weather.csv"
+  processed_data_path: "data/processed/cleaned_weather.csv"
+  train_data_path: "data/train/train.csv"
+  test_data_path: "data/test/test.csv"
+
+model:
+  name: "RandomForestRegressor"
+  save_path: "models/weather_model.pkl"
+
+training:
+  test_size: 0.2
+  random_state: 42
+  n_estimators: 100
+  max_depth: 10
+
+features:
+  input_features:
+    - temperature
+    - humidity
+    - wind_speed
+    - pressure
+
+  target_column: rainfall
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+
+streamlit:
+  app_title: "Weather Forecast Dashboard"
+
+logging:
+  log_file: "logs/app.log"
+  log_level: "INFO"
