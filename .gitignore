@@ -3,11 +3,11 @@ gitignore
 # *.dvc
 # !data/hourly_weather_data.csv.dvc
 
-data/
-!data/hourly_weather_data.csv.dvc
+# data/
+# !data/hourly_weather_data.csv.dvc
 
 # Data
-data/
+# data/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
