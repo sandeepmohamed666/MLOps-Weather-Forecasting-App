@@ -1,4 +1,11 @@
 gitignore
+
+# *.dvc
+# !data/hourly_weather_data.csv.dvc
+
+data/
+!data/hourly_weather_data.csv.dvc
+
 # Data
 data/
 # Byte-compiled / optimized / DLL files
